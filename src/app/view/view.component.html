@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <div class="AddEvent">
+        <button type="button" class="btn btn-lg btn-primary" (click) = "addEvent()"  >  + AddEvent</button>
+      </div>
+    </div>
+    <div class="col-4 view">
+        <div class="card" style="width: 30rem;">
+            <ul class="list-group list-group-flush" *ngFor = "let day of days" >
+              <li class="list-group-item">Cras justo odio {{day}}</li>
+            </ul>
+        </div> 
+    </div>
+  </div>
+</div>
