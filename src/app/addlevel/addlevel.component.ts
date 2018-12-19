@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -8,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddlevelComponent implements OnInit {
 
-  constructor() { }
+
+  eventData: Subject<any>;
+
+  constructor(public bsModalRef: BsModalRef) { }
 
   ngOnInit() {
+    this.eventData = new Subject();
   }
-
+  addEvent() {
+    const testData = {
+      title: 'meeting',
+      startTime: '12:30',
+      duration: '30',
+    };
+  this.eventData.next(testData);
+  console.log('asasd',this.eventData)
+}
 }

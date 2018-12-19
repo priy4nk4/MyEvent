@@ -1,15 +1,28 @@
 <div class="alert-box">
     <div class="modal-header">
-        <h4 class="modal-title">Confirm</h4>
+        <h4 class="modal-title">Add Event</h4>
         <button type="button" class="close" aria-label="Close" (click)="bsModalRef.hide()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        Are you sure want to delete this node?
+        <form>
+            <div class="form-group">
+            <label for="title">Event Title: </label>
+            <input type="text" placeholder="Meeting with John" class="form-control">
+            </div>
+            <div class="form-group">
+            <label for="start_time">Start Time: </label>
+            <input type="time" class="form-control">
+            </div>
+            <div class="form-group">
+            <label for="duration">Duration</label>
+            <input type="text" class="form-control" placeholder="30 minutes">
+            </div>
+        </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="onConfirm()">Yes</button>
-        <button type="button" class="btn btn-secondary" (click)="onCancel()">No</button>        
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="addEvent()">Save</button>        
     </div>
 </div>

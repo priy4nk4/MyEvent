@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule }   from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 import { AppComponent } from './app.component';
@@ -11,7 +11,7 @@ import { AddlevelComponent } from './addlevel/addlevel.component';
 
 const appRoutes: Routes = [
   { path: '', component: ViewComponent},
-  { path: 'level', component: AddlevelComponent}]
+  { path: 'level', component: AddlevelComponent}];
 
 
 @NgModule({
@@ -25,8 +25,10 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
-    BrowserModule
+    BrowserModule,
+    ModalModule.forRoot()
   ],
+  entryComponents: [AddlevelComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
