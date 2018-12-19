@@ -19,11 +19,10 @@ export class ViewComponent implements OnInit {
   }
   openModal() {
     this.bsModalRef = this.modalService.show(AddlevelComponent);
-    this.bsModalRef.content.label = 'Label';
-    this.bsModalRef.content.endTime = 'Label';
-    this.bsModalRef.content.closeBtnName = 'Close';
+    // this.bsModalRef.content.label = 'Label';
+    // this.bsModalRef.content.endTime = 'Label';
     console.log('HERE: ', this.bsModalRef.content);
-    this.bsModalRef.content.action.subscribe(resp => {
+    this.bsModalRef.content.eventData.subscribe(resp => {
       console.log('RESP: ', resp);
     });
   }

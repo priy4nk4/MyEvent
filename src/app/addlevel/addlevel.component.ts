@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 })
 export class AddlevelComponent implements OnInit {
 
-
+  closeBtnName: any;
   eventData: Subject<any>;
 
   constructor(public bsModalRef: BsModalRef) { }
@@ -18,13 +18,18 @@ export class AddlevelComponent implements OnInit {
   ngOnInit() {
     this.eventData = new Subject();
   }
-  addEvent() {
+  addEvent(title, starttime, duration) {
     const testData = {
-      title: 'meeting',
-      startTime: '12:30',
-      duration: '30',
+      title: title.value,
+      startTime: starttime.value,
+      duration: duration.value,
     };
   this.eventData.next(testData);
-  console.log('asasd',this.eventData)
+  console.log('asasd', this.eventData);
 }
+
+onCancel() {
+  this.bsModalRef.hide();
+}
+
 }
