@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
+import { v4 as uuid } from 'uuid';
+
 
 
 @Component({
@@ -19,13 +21,15 @@ export class AddlevelComponent implements OnInit {
     this.eventData = new Subject();
   }
   addEvent(title, starttime, duration) {
-    const testData = {
+    const eventObj = {
+      id: uuid(),
       title: title.value,
-      startTime: starttime.value,
-      duration: duration.value,
+      duration: parseInt(duration.value, 10),
+      startHour: parseInt(starttime.value.split(':')[0], 10),
+      startMinute: parseInt(starttime.value.split(':')[1], 10),
     };
-  this.eventData.next(testData);
-  console.log('asasd', this.eventData);
+  this.eventData.next(eventObj);
+  this.bsModalRef.hide();
 }
 
 onCancel() {
