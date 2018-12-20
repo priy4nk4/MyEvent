@@ -8,13 +8,15 @@
     <div class="col-4 view">
         <div class="card" style="width: 30rem;">
             <ul class="list-group list-group-flush" *ngFor = "let day of days; index as i" >
-              <div class="event"  *ngFor = "let event of getEvents" >
-                <li class="list-group-item timeline_{{i}}" [ngStyle]="{'background-color':event.hour === i ? 'green' : '',
-                    'height': event.hour === i ?'100px':''}" (click) = "openModal()">Cras justo odio {{day}}</li>
-              </div>
+                <li class="list-group-item timeline_{{i}}" style="height: 60px;background-color: #8fe0b759"><span class="time" style="z-index: 100;">{{day}} hrs</span></li>
             </ul>
         </div> 
     </div>
   </div>
 </div>
  
+<div *ngFor = "let event of getEvents">
+  <button type="button" class="btn btn-lg btn-primary" [ngStyle]="calculateStyle(event.startHour, event.startMinute, event.duration)" (click) = "openModal()" >
+    <span class="title" style="color:white;font-size: 15px;position: absolute;left: 30px;bottom: 0px;font-weight: 600;">{{event.title}} from {{event.startHour}}:{{event.startMinute}} hrs for {{event.duration}} minutes.</span>
+  </button>
+</div>

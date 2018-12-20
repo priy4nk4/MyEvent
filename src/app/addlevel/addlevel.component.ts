@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
 import { v4 as uuid } from 'uuid';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +15,8 @@ export class AddlevelComponent implements OnInit {
   closeBtnName: any;
   eventData: Subject<any>;
 
-  constructor(public bsModalRef: BsModalRef) { }
+  constructor(public bsModalRef: BsModalRef,
+    private router: Router) { }
 
   ngOnInit() {
     this.eventData = new Subject();
@@ -30,6 +31,8 @@ export class AddlevelComponent implements OnInit {
     };
   this.eventData.next(eventObj);
   this.bsModalRef.hide();
+  window.location.reload();
+
 }
 
 onCancel() {

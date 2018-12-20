@@ -13,26 +13,35 @@ export class ViewComponent implements OnInit {
   eventList: any = [];
   getEvents: any;
   class: any;
+  style: any;
 
   constructor(private modalService: BsModalService) {
     this.days = Array(24).fill('').map((x, i) => i);
    }
 
   ngOnInit() {
-    this.getEvents = JSON.parse(localStorage.getItem('eventList'));
+    
+    this.getEvents = JSON.parse(localStorage.getItem('eventItem'));
   }
   openModal() {
     this.bsModalRef = this.modalService.show(AddlevelComponent);
-    // this.bsModalRef.content.label = 'Label';
-    // this.bsModalRef.content.endTime = 'Label';
-    console.log('HERE: ', this.bsModalRef.content);
     this.bsModalRef.content.eventData.subscribe(resp => {
       this.eventList.push(resp);
-      localStorage.setItem('eventList', JSON.stringify(this.eventList));
-      console.log('eventList', this.eventList);
       console.log('RESP: ', resp);
+      localStorage.setItem('eventItem', JSON.stringify(this.eventList));
     });
   }
 
+  calculateStyle(startHour, startMinute, duration) {
+    this.style = {
+      'top.px': startMinute + startHour*60,
+      'position': 'absolute',
+      'right': '0px',
+      'width': '29rem',
+      'z-index':'10',
+      'height.px':duration,
+    };
+    return this.style;
+  }
 
 }
